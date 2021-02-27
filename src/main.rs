@@ -18,7 +18,12 @@ fn main() {
                 del(String::from(entry.unwrap().to_str().unwrap()));
             }
         }else {
-            del(file);
+            let metadata = fs::metadata(&file).unwrap();
+            if metadata.is_file(){
+                del(file);
+            }else {
+                eprintln!("{}: is a directory", file);
+            }
         }
        
     }
