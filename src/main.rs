@@ -21,7 +21,7 @@ fn main() {
     let mut args: Vec<String> = env::args().collect();
     args.remove(0);
     for file in args{
-        if file.contains("*") {
+        if file.contains("*") || file.contains("?") {
             glob_dir(file);
         }else {
             let metadata = fs::metadata(&file).unwrap();
